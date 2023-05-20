@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     get '/customers/:id/edit' => 'customers#edit', as:'customers_edit'
 
     get '/orders/:id' => 'orders#show', as:'orders_show'
+
+    get '/genres' => 'genres#index', as:'genres'
+    get '/genres/:id/edit' => 'genres#edit', as:'genres_edit'
   end
 
   scope module: :public do
