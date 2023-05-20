@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get '/cart_items' => 'cart_items#index', as:'cart_items'
 
     get '/orders/new' => 'orders#new', as:'order_new'
+    get '/orders/thanks' => 'orders#thanks', as:'order_thanks'
     get '/orders' => 'orders#index', as:'order'
     get '/orders/:id' => 'orders#show', as:'order_show'
 
