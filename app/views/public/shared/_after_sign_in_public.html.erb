@@ -1,0 +1,12 @@
+<%= link_to customer_show_path, class:'nav-link' do %>
+  マイページ
+<% end %>
+<%= link_to item_path, class:'nav-link' do %>
+  商品一覧
+<% end %>
+<%= link_to cart_items_path, class:'nav-link' do %>
+  カート
+<% end %>
+<%= link_to destroy_customer_session, method: :delete, class:'nav-link' do %>
+  ログアウト
+<% end %>

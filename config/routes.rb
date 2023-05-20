@@ -24,9 +24,9 @@ Rails.application.routes.draw do
     get '/items' => 'items#index', as:'item'
     get '/items/:id' => 'items#show', as:'item_show'
 
-    get '/costomers' => 'costomers#show', as:'costomer_show'
-    get '/customers/information/edit' => 'costomers#edit', as:'costomer_edit'
-    get '/customers/confirm_withdraw' => 'costomers#confirm_withdraw', as:'costomer_confirm_withdraw'
+    get '/customers' => 'customers#show', as:'customer_show'
+    get '/customers/information/edit' => 'customers#edit', as:'customer_edit'
+    get '/customers/confirm_withdraw' => 'customers#confirm_withdraw', as:'customer_confirm_withdraw'
 
     get '/cart_items' => 'cart_items#index', as:'cart_items'
 
