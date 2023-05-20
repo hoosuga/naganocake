@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   namespace :admin do
     get '/' => 'homes#top', as:'home'
   end
@@ -16,6 +15,8 @@ Rails.application.routes.draw do
     get '/orders/new' => 'orders#new', as:'order_new'
     get '/orders' => 'orders#index', as:'order'
     get '/orders/:id' => 'orders#show', as:'order_show'
+    get '/deliveries' => 'deliveries#index', as:'deliveries'
+    get '/deliveries/:id/edit' => 'deliveries#edit', as:'deliveries_edit'
   end
 
   # 管理者用
