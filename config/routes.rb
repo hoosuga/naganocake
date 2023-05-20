@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get '/costomers' => 'costomers#show', as:'costomers_show'
     get '/customers/information/edit' => 'costomers#edit', as:'costomers_edit'
     get '/customers/confirm_withdraw' => 'costomers#confirm_withdraw', as:'costomers_confirm_withdraw'
+    get '/cart_items' => 'cart_items#index', as:'cart_items'
   end
 
   # 管理者用
