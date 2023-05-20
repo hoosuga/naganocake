@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top', as:'home'
+    get '/items' => 'items#index', as:'item'
+    get '/items/new' => 'items#new', as:'item_new'
+    get '/items/:id' => 'items#show', as:'item_show'
+    get '/items/:id/edit' => 'items#edit', as:'item_edit'
   end
 
   scope module: :public do
