@@ -16,7 +16,7 @@
         ロゴ
       <% end %>
       <% if customer_signed_in? %>
-        <%= render 'admin/shared/after_sign_in_public' %>
+        <%= render 'public/shared/after_sign_in_public' %>
       <% elsif admin_signed_in? %>
         <%= render 'admin/shared/after_sign_in_admin' %>
       <% else %>
