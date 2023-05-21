@@ -14,9 +14,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm_withdraw
+    @customer = current_customer
   end
 
   def withdraw
+    @customer = current_customer
+    @customer.update(is_deleted: false)
+    reset_session
+    redirect_to root_path
   end
 
   protected

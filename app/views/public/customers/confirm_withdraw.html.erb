@@ -8,6 +8,6 @@
   退会しない
 <% end %>
 
-<%= link_to customer_withdraw_path, class:'nav-link' do %>
+<%= link_to customer_withdraw_path, method: :patch, class:'nav-link' do %>
   退会する
 <% end %>
