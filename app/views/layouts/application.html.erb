@@ -12,9 +12,14 @@
 
   <body>
     <header>
-      <%= link_to root_path, class:'nav-link' do %>
-        ロゴ
-      <% end %>
+      <ul class="navbar-nav mr-auto">
+        <li>
+        <%= link_to root_path, class:'nav-link' do %>
+          ロゴ
+        <% end %>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
       <% if customer_signed_in? %>
         <%= render 'public/shared/after_sign_in_public' %>
       <% elsif admin_signed_in? %>
@@ -22,6 +27,7 @@
       <% else %>
         <%= render 'admin/shared/before_sign_in' %>
       <% end %>
+      </ul>
     </header>
 
     <main>
