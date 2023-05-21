@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  # 管理者用
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+  }
+
+  # 顧客用
+  devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions',
+  }
+
   namespace :admin do
     get '/' => 'homes#top', as:'home'
 
@@ -26,8 +37,9 @@ Rails.application.routes.draw do
 
     get '/customers' => 'customers#show', as:'customer_show'
     get '/customers/information/edit' => 'customers#edit', as:'customer_edit'
+    patch '/customers/information' => 'customers#update', as:'customer_update'
     get '/customers/confirm_withdraw' => 'customers#confirm_withdraw', as:'customer_confirm_withdraw'
-
+    patch '/customers/withdraw' => 'customers#withdraw', as:'customer_withdraw'
     get '/cart_items' => 'cart_items#index', as:'cart_items'
 
     get '/orders/new' => 'orders#new', as:'order_new'
@@ -38,17 +50,5 @@ Rails.application.routes.draw do
     get '/deliveries' => 'deliveries#index', as:'deliveries'
     get '/deliveries/:id/edit' => 'deliveries#edit', as:'deliveries_edit'
   end
-
-  # 管理者用
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-  }
-
-  # 顧客用
-  devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions',
-  }
-
 
 end
