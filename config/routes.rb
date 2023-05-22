@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     get '/orders/:id' => 'orders#show', as:'orders_show'
 
     get '/genres' => 'genres#index', as:'genres'
+    post '/genre' => 'genres#create', as:'genres_create'
     get '/genres/:id/edit' => 'genres#edit', as:'genres_edit'
+    patch '/genres/:id' => 'genres#update', as:'genres_update'
   end
 
   scope module: :public do
