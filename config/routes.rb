@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
     get '/items' => 'items#index', as:'item'
     get '/items/new' => 'items#new', as:'item_new'
+    post '/item' => 'items#create', as:'item_create'
     get '/items/:id' => 'items#show', as:'item_show'
     get '/items/:id/edit' => 'items#edit', as:'item_edit'
 
