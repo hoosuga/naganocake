@@ -8,9 +8,39 @@
 
 <div class="form-group">
   商品名
-  <%= f.text_field :name %>
-
-  <%= button_tag(type: "submit", class: "btn btn-success") do %>
-  新規登録<% end %>
+  <%= f.text_field :name, placeholder:"商品名" %>
 </div>
+
+<div class="form-group">
+  商品説明
+  <%= f.text_area :introduction, placeholder:"ここに説明文を記述します" %>
+</div>
+
+<div class="form-group">
+  ジャンル
+  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_display) %>
+</div>
+
+<div class="form-group">
+  税抜価格
+  <%= f.text_field :price, placeholder:"1000" %>
+  円
+</div>
+
+<div class="form-group">
+  販売ステータス
+  <%= f.radio_button :sale_status, true %>
+  <%= f.label :sale_status_true, "販売中" %>
+
+  <%= f.radio_button :sale_status, false %>
+  <%= f.label :sale_status_false, "販売中止" %>
+
+</div>
+
+<div class="form-group">
+  <%= button_tag(type: "submit", class: "btn btn-success") do %>
+    新規登録
+  <% end %>
+</div>
+
 <% end %>
