@@ -1,4 +1,10 @@
-<h4>商品一覧</h4>
+<div>
+  <h4>商品一覧</h4>
+
+  <%= link_to admin_item_new_path do %>
+    +ボタン
+  <% end %>
+</div>
 
 <table>
   <thead>
@@ -25,13 +31,17 @@
           <%= item.price %>
         </td>
         <td>
-          <%= item.genre_id.name %>
+          <%= item.genre.name %>
         </td>
         <td>
-          <%= item.sale_status %>
+          <% if item.sale_status == true %>
+            販売中
+          <% else %>
+            販売停止中
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= paginate items %>
+<%= paginate @items %>
