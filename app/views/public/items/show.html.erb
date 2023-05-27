@@ -1,1 +1,19 @@
-<p>public/items#show</p>
+<%= render 'public/shared/genre_search', genres: @genres %>
+
+<div>
+  <%= image_tag @item.image, size:"150x100" %>
+</div>
+
+<h1>
+ <%= @item.name %>
+</h1>
+<h2>
+  <%= @item.introduction %>
+</h2>
+<h1>
+  ￥<%= @item.tax_price.to_s(:delimited) %>
+  <span style="font-size:20px">(税込)</span>
+</h1>
+
+<p>個数選択‐後で作る</p>
+<p>カートに入れる-後で作る</p>
