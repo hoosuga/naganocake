@@ -12,9 +12,14 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def edit
+    @delivery = Delivery.find(params[:id])
   end
 
   def update
+    @delivery = Delivery.find(params[:id])
+    @delivery.customer_id = current_customer.id
+    @delivery.update(delivery_params)
+    redirect_to deliveries_path
   end
 
   def destroy
