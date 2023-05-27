@@ -53,7 +53,10 @@ Rails.application.routes.draw do
     get '/orders/:id' => 'orders#show', as:'order_show'
 
     get '/deliveries' => 'deliveries#index', as:'deliveries'
+    post '/deliveries' => 'deliveries#create', as:'deliveries_create'
     get '/deliveries/:id/edit' => 'deliveries#edit', as:'deliveries_edit'
+    patch '/deliveries/:id' => 'deliveries#update', as:'deliveries_update'
+    delete '/deliveries/:id' => 'deliveries#destroy', as:'deliveries_destroy'
   end
 
 end
