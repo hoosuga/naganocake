@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     post '/item' => 'items#create', as:'item_create'
     get '/items/:id' => 'items#show', as:'item_show'
     get '/items/:id/edit' => 'items#edit', as:'item_edit'
+    patch 'items/:id' => 'items#update', as:'item_update'
 
     get '/customers' => 'customers#index', as:'customers'
     get '/customers/:id' => 'customers#show', as:'customers_show'
