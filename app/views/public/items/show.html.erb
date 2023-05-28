@@ -16,4 +16,10 @@
 </h1>
 
 <p>個数選択‐後で作る</p>
+<%#= form_with model: Cart_item.new do |f| %>
+  <%#= f.fidden_field :id, :value => item.id %>
+
+  <%#= f.select :amount, *[1..10] %>
+<%# end %>
+
 <p>カートに入れる-後で作る</p>

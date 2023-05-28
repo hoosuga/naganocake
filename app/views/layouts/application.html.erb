@@ -12,22 +12,22 @@
 
   <body>
     <header>
-      <ul class="navbar-nav mr-auto">
-        <li>
-        <%= link_to root_path, class:'nav-link' do %>
-          ロゴ
-        <% end %>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-      <% if customer_signed_in? %>
-        <%= render 'public/shared/after_sign_in_public' %>
-      <% elsif admin_signed_in? %>
-        <%= render 'admin/shared/after_sign_in_admin' %>
-      <% else %>
-        <%= render 'admin/shared/before_sign_in' %>
-      <% end %>
-      </ul>
+      <div class="container">
+        <nav class="nav navbar-nav navbar-left">
+          <%= link_to image_tag("ロゴ.jpg", size: '150x120'), root_path %>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right ml-auto">
+            <% if customer_signed_in? %>
+              <%= render 'public/shared/after_sign_in_public' %>
+            <% elsif admin_signed_in? %>
+              <%= render 'admin/shared/after_sign_in_admin' %>
+            <% else %>
+              <%= render 'admin/shared/before_sign_in' %>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
