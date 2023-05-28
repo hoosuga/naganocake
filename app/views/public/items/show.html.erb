@@ -18,7 +18,7 @@
 <div>
   <%= form_with model: @cart_item do |f| %>
     <%= f.hidden_field :id, :value => @item.id %>
-    <%= f.select :amount, *[1..10] %>
+    <%= f.select :amount, *[1..10] , {:prompt => "個数選択"} %>
     <%= f.submit 'カートに入れる' %>
   <% end %>
 </div>
