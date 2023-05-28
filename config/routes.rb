@@ -45,7 +45,8 @@ Rails.application.routes.draw do
     patch '/customers/information' => 'customers#update', as:'customer_update'
     get '/customers/confirm_withdraw' => 'customers#confirm_withdraw', as:'customer_confirm_withdraw'
     patch '/customers/withdraw' => 'customers#withdraw', as:'customer_withdraw'
-    get '/cart_items' => 'cart_items#index', as:'cart_items'
+
+    resources :cart_items, only: [:index, :create]
 
     get '/orders/new' => 'orders#new', as:'order_new'
     get '/orders/thanks' => 'orders#thanks', as:'order_thanks'
