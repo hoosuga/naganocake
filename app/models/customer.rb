@@ -4,6 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :delivery
+  has_many :delivery
   has_many :cart_items
+  has_many :order
 end
