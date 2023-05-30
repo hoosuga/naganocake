@@ -24,14 +24,10 @@
           <%= order.order_detail.amount %>
         </td>
         <td>
-          <% if order.order_status == true %>
-            販売中
-          <% else %>
-            販売停止中
-          <% end %>
+          <%= order.order_status %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= paginate @items %>
+<%= paginate @orders %>
