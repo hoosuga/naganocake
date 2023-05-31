@@ -1,6 +1,13 @@
 <h4>注文情報入力</h4>
 
-<%= form_with model: @order, url: admin_item_create_path, method: :post do |f| %>
+<%= form_with model: @order, url: order_confirm_path, method: :post do |f| %>
 <P>支払い方法</P>
+<div class="form-group">
+  <%= f.radio_button :sale_status, true %>
+  <%= f.label :sale_status_true, "販売中" %>
 
-<% end 
+  <%= f.radio_button :sale_status, false %>
+  <%= f.label :sale_status_false, "販売中止" %>
+</div>
+
+<% end %>
