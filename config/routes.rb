@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     get '/orders/:id' => 'orders#show', as:'orders_show'
     patch '/orders/:id' => 'orders#update', as:'orders_update'
 
+    patch '/:order_:id/order_details/:id' => 'order_details#update', as:'order_detail_update'
+
     get '/genres' => 'genres#index', as:'genres'
     post '/genre' => 'genres#create', as:'genres_create'
     get '/genres/:id/edit' => 'genres#edit', as:'genres_edit'
@@ -54,6 +56,8 @@ Rails.application.routes.draw do
     get '/orders/thanks' => 'orders#thanks', as:'order_thanks'
     get '/orders' => 'orders#index', as:'order'
     get '/orders/:id' => 'orders#show', as:'order_show'
+    post '/orders/confirm' => 'orders#confirm', as: 'order_confirm'
+    post '/orders' => 'orders#create', as:'order_determined'
 
     get '/deliveries' => 'deliveries#index', as:'deliveries'
     post '/deliveries' => 'deliveries#create', as:'deliveries_create'
