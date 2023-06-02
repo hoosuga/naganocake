@@ -1,24 +1,17 @@
-<li>
   ようこそ、<%= current_customer.last_name %>さん！
-</li>
 
-<li>
-  <%= link_to customer_show_path, class:'nav-link text-right' do %>
-    マイページ
+  <%= link_to customer_show_path, class:'text-right' do %>
+    <button type="button" class="btn btn-outline-secondary">マイページ</button>
   <% end %>
-</li>
-<li>
-  <%= link_to item_path, class:'nav-link text-right' do %>
-    商品一覧
+
+  <%= link_to item_path, class:'text-right' do %>
+    <button type="button" class="btn btn-outline-secondary">商品一覧</button>
   <% end %>
-</li>
-<li>
-  <%= link_to cart_items_path, class:'nav-link text-right' do %>
-    カート
+
+  <%= link_to cart_items_path, class:'text-right' do %>
+    <button type="button" class="btn btn-outline-secondary">カート</button>
   <% end %>
-</li>
-<li>
-  <%= link_to destroy_customer_session_path, method: :delete, class:'nav-link text-right' do %>
-    ログアウト
-  <% end %>
-</li>
+
+<%= link_to "ログアウト",destroy_customer_session_path, class: "btn btn-outline-secondary m-3", method: :delete %>
+
+

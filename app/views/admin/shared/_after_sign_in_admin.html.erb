@@ -1,25 +1,19 @@
-<li>
-  <%= link_to admin_item_path, class:'nav-link text-right' do %>
-    商品一覧
+  <%= link_to admin_item_path, class:'text-right' do %>
+    <button type="button" class="btn btn-outline-secondary">商品一覧</button>
   <% end %>
-</li>
-<li>
-  <%= link_to admin_customers_path, class:'nav-link text-right' do %>
-    会員一覧
+
+  <%= link_to admin_customers_path, class:'text-right' do %>
+    <button type="button" class="btn btn-outline-secondary">会員一覧</button>
   <% end %>
-</li>
-<li>
-  <%= link_to admin_home_path, class:'nav-link text-right' do %>
-    注文履歴一覧
+
+  <%= link_to admin_home_path, class:'text-right' do %>
+    <button type="button" class="btn btn-outline-secondary">注文履歴一覧</button>
   <% end %>
-</li>
-<li>
-  <%= link_to admin_genres_path, class:'nav-link text-right' do %>
-    ジャンル一覧
+
+  <%= link_to admin_genres_path, class:'text-right' do %>
+    <button type="button" class="btn btn-outline-secondary">ジャンル一覧</button>
   <% end %>
-</li>
-<li>
-  <%= link_to destroy_admin_session_path, method: :delete, class:'nav-link text-right' do %>
-    ログアウト
+
+  <%= link_to destroy_admin_session_path, method: :delete, class:'text-right' do %>
+    <button type="button" class="btn btn-outline-secondary">ログアウト</button>
   <% end %>
-</li>

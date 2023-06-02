@@ -13,20 +13,26 @@
   <body class="d-flex flex-column vh-100">
     <header>
       <div class="container">
-        <nav class="nav navbar-nav navbar-left justify-content-end">
-          <%= link_to image_tag("ロゴ.jpg", size: '150x120'), root_path %>
-        </nav>
+        <div class="row">
+          <div class="col-lg-2">
+            <nav class="navbar navbar-expand-lg navbar-light">
+              <%= link_to image_tag("ロゴ.jpg", size: '150x120'), root_path %>
+            </nav>
+          </div>
+          <div class="col-lg-10 d-flex justify-content-end">
           <nav>
-            <ul class="nav navbar-nav navbar-right ml-auto">
+            <ul class="nav navbar-nav navbar-right ml-auto nav-pills nav-item">
               <% if customer_signed_in? %>
-                <li><%= render 'public/shared/after_sign_in_public' %></li>
+                <li class="nav-item"><%= render 'public/shared/after_sign_in_public' %></li>
               <% elsif admin_signed_in? %>
-                <li><%= render 'admin/shared/after_sign_in_admin' %></li>
+                <li class="nav-item"><%= render 'admin/shared/after_sign_in_admin' %></li>
               <% else %>
-                <li><%= render 'admin/shared/before_sign_in' %></li>
+                <li class="nav-item"><%= render 'admin/shared/before_sign_in' %></li>
               <% end %>
             </ul>
           </nav>
+          </div>
+        </div>
       </div>
     </header>
 
