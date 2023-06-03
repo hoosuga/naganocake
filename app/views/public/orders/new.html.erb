@@ -5,7 +5,7 @@
 
     <h4>注文情報入力</h4>
 
-    <%= form_with model: @order, url: order_confirm_path, method: :post do |f| %>
+    <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
     <P>支払い方法</P>
     <div class="form-group">
       <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>

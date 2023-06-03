@@ -7,7 +7,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.save
-    redirect_to admin_item_show_path(@order.id)
+    redirect_to orders_confirm_path
   end
 
   def thanks

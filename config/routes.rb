@@ -55,8 +55,9 @@ Rails.application.routes.draw do
     get '/orders/new' => 'orders#new', as:'order_new'
     get '/orders/thanks' => 'orders#thanks', as:'order_thanks'
     get '/orders' => 'orders#index', as:'order'
+    get '/orders/confirm' => 'orders#confirm', as: 'order_confirm'
+    post '/orders/confirm' => 'orders#confirm'
     get '/orders/:id' => 'orders#show', as:'order_show'
-    post '/orders/confirm' => 'orders#confirm', as: 'order_confirm'
     post '/orders' => 'orders#create', as:'order_determined'
 
     get '/deliveries' => 'deliveries#index', as:'deliveries'
