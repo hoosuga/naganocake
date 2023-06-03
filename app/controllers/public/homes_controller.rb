@@ -1,5 +1,5 @@
 class Public::HomesController < ApplicationController
-  def home
+  def top
     @genres = Genre.all
     @items = Item.all
   end
