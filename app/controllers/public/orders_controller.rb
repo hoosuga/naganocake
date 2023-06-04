@@ -9,9 +9,7 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.payment_method = params[:order][:payment_method]
     @cart_items = current_customer.cart_items
-    @sum = 0
-    @order.postage = 800
-    
+
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -24,6 +22,8 @@ class Public::OrdersController < ApplicationController
     else params[:order][:select_address] == "2"
     end
 
+    @sum = 0
+    @order.postage = 800
   end
 
   def thanks
