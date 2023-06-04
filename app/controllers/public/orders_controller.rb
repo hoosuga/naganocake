@@ -10,17 +10,19 @@ class Public::OrdersController < ApplicationController
     @order.payment_method = params[:order][:payment_method]
     @cart_items = current_customer.cart_items
     @sum = 0
+    @order.postage = 800
+    
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.full_name
-    else params[:order][:select_address] == "1"
+    elsif params[:order][:select_address] == "1"
       @address = Delivery.find(params[:order][:deliveries_id])
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
+    else params[:order][:select_address] == "2"
     end
-    #@order.name = current_customer.first_name + current_customer.last_name
 
   end
 
