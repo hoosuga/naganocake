@@ -1,9 +1,17 @@
 class Order < ApplicationRecord
-  has_many :order_detail
+  has_many :order_details
   belongs_to :customer
 
   def subtotal
     item.tax_price * amount
+  end
+
+  def get_amount(order)
+    total = 0
+    order.order_details.each do |order_detail|
+      total += order_detail.amount
+    end
+    return total
   end
 
   enum payment_method: { credit_card: 0, transfer: 1 }
