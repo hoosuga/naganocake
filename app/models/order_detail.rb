@@ -4,4 +4,8 @@ class OrderDetail < ApplicationRecord
 
   enum crafting_status: { not_make: 0, waiting_to_make: 1, making: 2, completed: 3 }
 
+  def subtotal
+    item.tax_price * amount
+  end
+
 end
