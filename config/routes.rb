@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get '/orders/:id' => 'orders#show', as:'orders_show'
     patch '/orders/:id' => 'orders#update', as:'orders_update'
 
-    patch '/:order_:id/order_details/:id' => 'order_details#update', as:'order_detail_update'
+    patch '/:order_id/order_details/:id' => 'order_details#update', as:'order_detail_update'
 
     get '/genres' => 'genres#index', as:'genres'
     post '/genre' => 'genres#create', as:'genres_create'
