@@ -1,7 +1,12 @@
-<%= link_to "About", about_path, class: "btn btn-outline-secondary m-3" %>
-
-<%= link_to "商品一覧", item_path, class: "btn btn-outline-secondary m-3" %>
-
-<%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary m-3" %>
-
-<%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary m-3" %>
+<li class="d-flex justify-content-end">
+  <%= link_to "About", about_path, class: "btn btn-outline-secondary m-3" %>
+  <%= link_to "商品一覧", item_path, class: "btn btn-outline-secondary m-3" %>
+  <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary m-3" %>
+  <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary m-3" %>
+</li>
+<li class="input-group d-flex justify-content-end m-3">
+  <%= form_with url: admin_search_path, method: :get, loccal: true do |f| %>
+    <%= f.text_field :word %>
+    <%= f.submit "Search" %>
+  <% end %>
+</li>

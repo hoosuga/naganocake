@@ -28,6 +28,11 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_item_show_path(@item.id)
   end
 
+  def search
+    @items = Item.all
+    @items = @items.where('name LIKE ?', "%#{params[:search]}%") if params[:seach].present?
+  end
+
   private
 
   def item_params
