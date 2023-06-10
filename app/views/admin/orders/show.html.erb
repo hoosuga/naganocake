@@ -38,7 +38,7 @@
             </tr>
             <tr>
               <td class="col-lg-2 font-weight-bold">注文ステータス</td>
-              <td><%= f.select :order_status, Order.order_statuses_i18n.values %>
+              <td><%= f.select :order_status, Order.order_statuses_i18n.keys.map{|status| [I18n.t("enums.order.order_status.#{status}"),status]} %>
                     <%= button_tag(type: "submit", class: "btn btn-success") do %>
                       更新
                     <% end %>
@@ -79,8 +79,8 @@
               <%= order_detail.subtotal %>
             </td>
             <td>
-              <%= form_with model: @order_detail, url: admin_order_detail_update_path(order_id: @order, id: order_detail), method: :patch do |f| %>
-                <%= f.select :crafting_status, OrderDetail.crafting_statuses_i18n.values %>
+              <%= form_with model: order_detail, url: admin_order_detail_update_path(order_id: @order, id: order_detail), method: :patch do |f| %>
+                <%= f.select :crafting_status, OrderDetail.crafting_statuses_i18n.invert %>
                 <%= button_tag(type: "submit", class: "btn btn-success") do %>
                   更新
                 <% end %>
