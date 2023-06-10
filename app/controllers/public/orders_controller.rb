@@ -51,6 +51,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.all
+    @sum = 0
   end
 
   private
