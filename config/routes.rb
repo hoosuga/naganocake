@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get '/items/:id' => 'items#show', as:'item_show'
     get '/items/:id/edit' => 'items#edit', as:'item_edit'
     patch 'items/:id' => 'items#update', as:'item_update'
+    get "/search" => "items#search"
 
     get '/customers' => 'customers#index', as:'customers'
     get '/customers/:id' => 'customers#show', as:'customers_show'
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
 
     get '/items' => 'items#index', as:'item'
     get '/items/:id' => 'items#show', as:'item_show'
+    get "/search" => "items#search"
 
     get '/customers' => 'customers#show', as:'customer_show'
     get '/customers/information/edit' => 'customers#edit', as:'customer_edit'

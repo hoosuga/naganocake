@@ -7,3 +7,10 @@
 <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary m-3" %>
 
 <%= link_to "ログアウト", destroy_admin_session_path, class: "btn btn-outline-secondary m-3", method: :delete %>
+
+<div class="input-group d-flex justify-content-end">
+  <%= form_with url: admin_search_path, method: :get, loccal: true do |f| %>
+    <%= f.text_field :word %>
+    <%= f.submit "Search" %>
+  <% end %>
+</div>
