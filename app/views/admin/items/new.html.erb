@@ -32,16 +32,19 @@
             <tr>
               <td class="col-lg-2" style="padding-top: 0px">販売ステータス</td>
               <td style="padding-top: 0px">
-                <%= f.radio_button :sale_status, true %><%= f.label :sale_status_true, "販売中" %>
+                <span style="margin-right: 10px;"><%= f.radio_button :sale_status, true %><%= f.label :sale_status_true, "販売中" %></span>
                 <%= f.radio_button :sale_status, false %><%= f.label :sale_status_false, "販売中止" %>
               </td>
             </tr>
+            <tr>
+              <td></td>
+              <td>
+                <span style="margin-left: 80px;"><%= f.submit "　新規登録　", class: "btn btn-success" %></span>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="row d-flex justify-content-center" style="margin-bottom: 100px;">
-    <%= button_tag(type: "submit", class: "btn btn-success") do %>　新規登録　<% end %>
-  </div>
-  <% end %>
 </div>

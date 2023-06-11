@@ -23,7 +23,7 @@
             </tr>
             <tr>
               <td class="col-lg-2" style="padding-top: 0px">ジャンル</td>
-              <td style="padding-top: 0px; width: 295px;"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_display), {style: 'width: 295px;'} %></td>
+              <td style="padding-top: 0px; width: 295px;"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_display, @item.genre_id), {prompt: "-- 選択してください --"}, {style: 'width: 295px;'} %></td>
             </tr>
             <tr>
               <td class="col-lg-2" style="padding-top: 0px">税抜価格</td>
@@ -32,16 +32,19 @@
             <tr>
               <td class="col-lg-2" style="padding-top: 0px">販売ステータス</td>
               <td style="padding-top: 0px">
-                <%= f.radio_button :sale_status, true %><%= f.label :sale_status_true, "販売中" %>
+                <span style="margin-right: 10px;"><%= f.radio_button :sale_status, true %><%= f.label :sale_status_true, "販売中" %></span>
                 <%= f.radio_button :sale_status, false %><%= f.label :sale_status_false, "販売中止" %>
               </td>
             </tr>
-          </tbody>
-        </table>
+            <tr>
+              <td></td>
+              <td>
+                <span style="margin-left: 80px;"><%= f.submit "変更を保存", class: "btn btn-success" %></td>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
-  <div class="row d-flex justify-content-center" style="margin-bottom: 100px;">
-    <%= button_tag(type: "submit", class: "btn btn-success") do %>　変更を保存　<% end %>
-  </div>
-  <% end %>
 </div>

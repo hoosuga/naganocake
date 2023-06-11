@@ -11,7 +11,7 @@
           <tr>
             <td class="col-lg-2 font-weight-bold">ジャンル名</td>
             <td style="width: 30px;"><%= f.text_field :name, placeholder:"ジャンル名" %></td>
-            <td><%= button_tag(type: "submit", class: "btn btn-success") do %>　新規登録　<% end %></td>
+            <td><%= f.submit "　新規登録　", class: "btn btn-success" %></td>
           </tr>
         <% end %>
       </table>
