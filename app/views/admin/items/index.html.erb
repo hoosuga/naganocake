@@ -1,47 +1,51 @@
-<div>
-  <h4>商品一覧</h4>
-
-  <%= link_to admin_item_new_path do %>
-    +ボタン
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-1">
+      <h5 class="p-3"><span style="background-color:#dcdcdc;">　商品一覧　</span></h5>
+    </div>
+    <div class="social col-lg-1 d-flex justify-content-end p-3">
+      <%= link_to admin_item_new_path do %>
+        <i class="fa-solid fa-circle-plus fa-lg" style="color: #aaaeb5;"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1 px-0 border-top border-bottom">
+      <table class="table table-borderless">
+        <thead class="thead-light">
+          <tr>
+            <th>商品ID</th>
+            <th class="col-lg-4">商品名</th>
+            <th>税抜価格</th>
+            <th class="col-lg-3">ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td>
+                <%= link_to admin_item_show_path(item.id) do %>
+                  <%= item.name %>
+                <% end %>
+              </td>
+              <td><%= item.price %> </td>
+              <td><%= item.genre.name %></td>
+              <td>
+                <% if item.sale_status == true %>
+                  <span class="font-weight-bold" style="color:#00AA00;">販売中</span>
+                <% else %>
+                  <span class="font-weight-bold"  style="color:#C0C0C0;">販売停止中</span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center p-2">
+    <%= paginate @items %>
+  </div>
 </div>
-
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td>
-          <%= item.id %>
-        </td>
-        <td>
-          <%= link_to admin_item_show_path(item.id) do %>
-            <%= item.name %>
-          <% end %>
-        </td>
-        <td>
-          <%= item.price %>
-        </td>
-        <td>
-          <%= item.genre.name %>
-        </td>
-        <td>
-          <% if item.sale_status == true %>
-            販売中
-          <% else %>
-            販売停止中
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @items %>
