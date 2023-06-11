@@ -5,7 +5,7 @@
     </div>
 　</div>
 　<div class="row">
-    <div class="col-lg-4 offset-lg-1">
+    <div class="col-lg-3 offset-lg-1">
       <% if @item.image.attached? %>
         <%= image_tag @item.image, size:"200x150" %>
       <% else %>
@@ -13,31 +13,31 @@
       <% end %>
     </div>
     <div class="col-lg-5">
-      <table>
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <td>商品名</td>
             <td><%= @item.name %></td>
           </tr>
           <tr>
-            <td>商品説明</td>
-            <td><%= @item.introduction %></td>
+            <td style="padding-top: 0px">商品説明</td>
+            <td style="padding-top: 0px"><%= @item.introduction %></td>
           </tr>
           <tr>
-            <td>ジャンル</td>
-            <td><%= @item.genre.name %></td>
+            <td style="padding-top: 0px">ジャンル</td>
+            <td style="padding-top: 0px"><%= @item.genre.name %></td>
           </tr>
           <tr>
-            <td>税込価格</br>(税抜価格)</td>
-            <td><%= @item.tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</td>
+            <td style="padding-top: 0px">税込価格</br>(税抜価格)</td>
+            <td><%= @item.tax_price.to_s(:delimited) %> (<%= @item.price.to_s(:delimited) %>)円</td>
           </tr>
           <tr>
-            <td>販売ステータス</td>
-            <td>
+            <td style="padding-top: 0px">販売ステータス</td>
+            <td style="padding-top: 0px">
               <% if @item.sale_status == true %>
-                販売中
+                <span class="font-weight-bold" style="color:#00AA00;">販売中</span>
               <% else %>
-                販売停止中
+                <span class="font-weight-bold"  style="color:#C0C0C0;">販売停止中</span>
               <% end %>
             </td>
           </tr>
@@ -45,9 +45,7 @@
       </table>
     </div>
   </div>
-  <div class="row">
-    <%= link_to admin_item_edit_path(@item.id) do %>
-      編集する
-    <% end %>
+  <div class="row d-flex justify-content-center" style="margin-bottom: 100px;">
+    <%= link_to "　編集する　", admin_item_edit_path(@item.id), class: 'btn btn-success' %>
   </div>
 </div>

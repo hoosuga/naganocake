@@ -23,7 +23,7 @@
             </tr>
             <tr>
               <td class="col-lg-2" style="padding-top: 0px">ジャンル</td>
-              <td class="genre_select" style="padding-top: 0px; width: 100px;"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_display), {prompt: "-- 選択してください --"}, {style: 'width: 295px;'} %></td>
+              <td style="padding-top: 0px;"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_display), {prompt: "-- 選択してください --"}, {style: 'width: 295px;'} %></td>
             </tr>
             <tr>
               <td class="col-lg-2" style="padding-top: 0px">税抜価格</td>
@@ -36,13 +36,12 @@
                 <%= f.radio_button :sale_status, false %><%= f.label :sale_status_false, "販売中止" %>
               </td>
             </tr>
-            <tr>
-              <td></td>
-              <td style="padding-top: 0px"><%= button_tag(type: "submit", class: "btn btn-success") do %>　新規登録　<% end %></td>
-            </tr>
-          <% end %>
         </tbody>
       </table>
     </div>
   </div>
+  <div class="row d-flex justify-content-center" style="margin-bottom: 100px;">
+    <%= button_tag(type: "submit", class: "btn btn-success") do %>　新規登録　<% end %>
+  </div>
+  <% end %>
 </div>
