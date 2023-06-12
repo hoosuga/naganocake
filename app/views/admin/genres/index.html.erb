@@ -7,13 +7,15 @@
   <div class="row">
     <div class="col-lg-9" style="padding: 10px;">
       <table class="table table-borderless">
-        <%= form_with model: @genre, url: admin_genres_create_path, method: :post do |f| %>
-          <tr>
-            <td class="col-lg-2 font-weight-bold">ジャンル名</td>
-            <td style="width: 30px;"><%= f.text_field :name, placeholder:"ジャンル名" %></td>
-            <td><%= f.submit "　新規登録　", class: "btn btn-success" %></td>
-          </tr>
-        <% end %>
+        <tbody>
+          <%= form_with model: @genre, url: admin_genres_create_path, method: :post do |f| %>
+            <tr>
+              <td class="col-lg-2 font-weight-bold">ジャンル名</td>
+              <td style="width: 30px;"><%= f.text_field :name, placeholder:"ジャンル名" %></td>
+              <td><%= f.submit "　新規登録　", class: "btn btn-success" %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
