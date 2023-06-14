@@ -1,23 +1,45 @@
-<h3>ログイン</h3>
-
-<h4>会員の方はこちらからログイン</h4>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <h5 class="p-3"><span style="background-color:#dcdcdc;">　ログイン　</span></h5>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1" style="padding-left: 80px;">
+      <h5 class="p-3"><span style="background-color:#dcdcdc;">　会員の方はこちらからログイン　</span></h5>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="row" style="margin-bottom: 30px;">
+    <div class="col-lg-9 offset-lg-3">
+      <table class="table table-borderless">
+        <tbody>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <tr>
+              <td class="col-lg-3"><%= f.label :email, "メールアドレス" %></td>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" , size: 40 %></td>
+            </tr>
+            <tr>
+              <td class="col-lg-3" style="padding-top: 0px"><%= f.label :password, "パスワード" %></td>
+              <td style="padding-top: 0px"><%= f.password_field :password, autocomplete: "current-password", size: 40 %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.submit "　ログイン　", class: "btn btn-primary" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-<% end %>
-
-<h4>会員登録がお済みでない方</h4>
-  <%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってださい。
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1" style="padding-left: 80px;">
+      <h5 class="p-3"><span style="background-color:#dcdcdc;">　会員登録がお済みでない方　</span></h5>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 50px;">
+    <div class="col-lg-9 offset-lg-3">
+      <p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってださい。</p>
+    </div>
+  </div>
 <%#= render "public/shared/links" %>
+</div>

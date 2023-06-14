@@ -1,12 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-2">
-    <%= render 'public/shared/genre_search', genres: @genres %>
+    <div class="col-lg-3" style="padding-left: 70px;">
+      <%= render 'public/shared/genre_search', genres: @genres %>
     </div>
     <div class="col-lg-7">
-      <div style="background-image: url(<%= asset_path('top.jpg') %>); height: 250px; background-size: cover; background-position: center;">
-        <div class="top-visual" style="padding-top: 60px; padding-left: 120px;">
+      <div style="background-image: url(<%= asset_path('top.jpg') %>); height: 355px; background-size: cover; background-position: center;">
+        <div class="top-visual" style="padding-top: 90px; padding-left: 120px;">
           <p class="top-visual-text" style="color: ">ようこそ、ながのCAKEへ！</br>
              このサイトは、ケーキ販売のECサイトになります。</br>
              会員でない方も商品の閲覧はできますが、</br>
@@ -15,22 +14,26 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-2"></div>
   </div>
   <div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-9">
+    <div class="col-lg-9 offset-lg-3">
       <h2>新着商品</h2>
-      <% @items.first(4).each do |item| %>
-        <%= link_to item_show_path(item.id) do %>
-          <%= image_tag item.image, size:"150x100" %>
-        <% end %></br>
-        <%= link_to item_show_path(item.id) do %>
-          <%= item.name %>
-        <% end %></br>
-        ￥<%= item.tax_price.to_s(:delimited) %>
-      <% end %>
-      <%= link_to "全ての商品をみる>", item_path %>
+      <div style="display: flex; flex-wrap: wrap;">
+        <% @items.last(4).each do |item| %>
+          <li style="list-style: none; higthmargin-top: 50px; margin-right: 30px; width: 150px; heigth: 160px;">
+            <%= link_to item_show_path(item.id) do %>
+              <%= image_tag item.image, size:"150x100" %>
+            <% end %></br>
+            <%= link_to item_show_path(item.id) do %>
+              <%= item.name %>
+            <% end %></br>
+            ￥<%= item.tax_price.to_s(:delimited) %>
+          </li>
+        <% end %>
+      </div>
+      <div class="justify-content-right" style="text-align: right; margin-right: 50px;">
+        <%= link_to "全ての商品をみる>", item_path %>
+      </div>
     </div>
   </div>
 </div>
