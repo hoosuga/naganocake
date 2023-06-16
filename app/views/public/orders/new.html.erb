@@ -21,18 +21,17 @@
           <span style="margin-left: 20px;">〒<%= current_customer.postal_code %><%= current_customer.address %></span></br>
           <span style="margin-left: 20px;"><%= current_customer.last_name %><%= current_customer.first_name %></span>
         </div>
-        <div style="padding-left: 50px; padding-top: 5px; margin-bottom: 0px;">
+        <div style="padding-left: 50px; padding-top: 10px; margin-bottom: 0px;">
           <%= f.radio_button :select_address, 1 %>
-          <%= f.label :address_registered, "登録済住所から選択" %></br>
-          <span style="margin-left: 20px; margin-top: 0px; width: 295px;"><%= f.select :deliveries_id, options_from_collection_for_select(current_customer.deliveries, :id, :deliveries_display), {style: 'width: 295px;'}%></span>
+          <label style="margin-bottom: -5px;"><%= f.label :address_registered, "登録済住所から選択" %></label></br>
+          <span style="margin-left: 20px; margin-top: 0px; width: 295px;"><%= f.select :deliveries_id, options_from_collection_for_select(current_customer.deliveries, :id, :deliveries_display) %></span>
         </div>
-        <div>
+        <div style="padding-left: 50px; padding-top: 10px; margin-bottom: 0px;">
           <%= f.radio_button :select_address, 2 %>
-          <%= f.label :address_new, "新しいお届け先" %>
-          <div>
-            郵便番号(ハイフンなし)
+          <label style="margin-bottom: -10px;"><%= f.label :address_new, "新しいお届け先" %></label></br>
+          <span style="margin-left: 20px;"> 郵便番号(ハイフンなし)
             <%= f.text_field :postal_code, placeholder:"0000000" %>
-          </div>
+          </span>
           <div>
             住所
             <%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0" %>
