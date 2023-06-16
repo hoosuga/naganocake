@@ -1,85 +1,81 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-10 offset-lg-1" style="display: flex; margin-left: px;">
-      <li class="p-3" style="list-style: none;"><h5><span style="background-color:#dcdcdc;">　ショッピングカート　</span></h5></li>
-      <li class="p-3" style="list-style: none; margin-left: 40px;"><%= link_to " カートを空にする ", cart_items_destroy_all_path, class: "btn btn-danger", method: :delete %></li>
+    <div class="col-lg-8 offset-lg-1">
+      <h5 class="p-3s"><span style="background-color:#dcdcdc;">　ショッピングカート　</span></h5>
+    </div>
+    <div class="col-lg-2" style="padding-right: 0px;">
+      <span class="p-3"><%= link_to " カートを空にする ", cart_items_destroy_all_path, class: "btn btn-danger", method: :delete %></span>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-8" style="padding: 10px;">
+  <div class="row" style="margin-bottom: 10px; margin-top: 10px;">
+    <div class="col-lg-11 offset-lg-1" style="padding: 10px; padding-right: 80px;">
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal;">商品名</th>
-            <th class="table-active col-lg-4 border border-dark" style="font-weight: normal;">単価(税込)</th>
-            <th class="table-active col-lg-2 border border-dark" style="font-weight: normal;">数量</th>
-            <th class="table-active col-lg-2 border border-dark" style="font-weight: normal;">小計</th>
-            <th class="table-active col-lg-3 border border-dark"></th>
+            <th class="table-active col-lg-3 border border-dark" style="font-weight: normal; padding-left: 5px;">商品名</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">単価(税込)</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">数量</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">小計</th>
+            <th class="table-active col-lg-1 border border-dark"></th>
           </tr>
         </thead>
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr>
-              <td>
-                <%= image_tag cart_item.item.image, size:'150x100' %>
-                <%= cart_item.item.name %>
+              <td class="border border-dark align-middle" style="padding:5px;">
+                <%= image_tag cart_item.item.image, size:'80x60' %>
+                <span class="font-weight-bold" style="padding-left: 20px;"><%= cart_item.item.name %></span>
               </td>
-              <td>
-                <%= cart_item.item.tax_price.to_s(:delimited, delimter: ',') %>
+              <td class="border border-dark align-middle" style="padding:5px;">
+                <span class="font-weight-bold"><%= cart_item.item.tax_price.to_s(:delimited, delimter: ',') %></span>
               </td>
-              <td>
+              <td class="border border-dark align-middle" style="padding:5px;">
                 <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
                   <%= f.select :amount, *[1..10] %>
-                  <%= button_tag(type: "submit", class: "btn btn-success") do %>
-                    変更
-                  <% end %>
+                  <span style="padding-left:5px;">
+                    <%= button_tag(type: "submit", class: "btn btn-success") do %>
+                      変更
+                    <% end %>
+                  </span>
                 <% end %>
               </td>
-              <td>
-                <%= cart_item.subtotal.to_s(:delimited, delimter: ',') %>
+              <td class="border border-dark align-middle" style="padding:5px;">
+                <span class="font-weight-bold"><%= cart_item.subtotal.to_s(:delimited, delimter: ',') %></span>
               </td>
-              <td>
-                <%= link_to "Destroy", cart_item_path(cart_item.id), method: :delete %>
+              <td class="border border-dark align-middle" style="padding:5px; text-align:center;">
+                <span><%= link_to " 削除する ", cart_item_path(cart_item.id), class: "btn btn-danger", method: :delete %></span>
               </td>
             </tr>
             <% @sum += cart_item.subtotal %>
           <% end %>
         </tbody>
       </table>
-      </div>
-    <div class="col-lg-1"></div>
+    </div>
   </div>
   <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
-    <div>
-      <%= link_to root_path do %>
-       買い物を続ける
-      <% end %>
+    <div class="col-lg-7 offset-lg-1">
+      <div style="padding-left: 80px; margin-top: 10px;"><%= link_to " 買い物を続ける ", root_path, class: 'btn btn-primary' %></div>
     </div>
-    <div>
-     <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
+    <div class="col-lg-4" style="padding-left: 30px; padding-right: 80px;">
+      <table class="table table-bordered">
         <tbody>
           <tr>
-            <td>合計金額</td>
-            <td><%= @sum %></td>
+            <td width="135px" class="table-active border border-dark align-middle" style="padding-left: 5px; padding-top: 20px; padding-bottom: 20px;">
+              <span class="font-weight-bold">合計金額</span>
+            </td>
+            <td class="border border-dark align-middle" style="padding-left: 5px;">
+              <span class="font-weight-bold"><%= @sum.to_s(:delimited, delimter: ',') %></span>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-    </div>
-    <div class="col-lg-1"></div>
   </div>
-  <div class="row">
-  <div class="mx-auto">
-    <%= link_to order_new_path do %>
-      情報入力に進む
-    <% end %>
+  <div class="row" style="margin-bottom: 80px; margin-top: 10px;">
+    <div class="mx-auto">
+      <% if @cart_items.any? %>
+        <%= link_to "　情報入力に進む　", order_new_path, class: 'btn btn-success' %>
+      <% end %>
+    </div>
   </div>
 </div>

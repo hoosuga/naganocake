@@ -41,10 +41,10 @@
         <tbody>
           <% @deliveries.each do |delivery| %>
             <tr>
-              <th class="border border-dark align-middle" style="font-weight: normal;"><%= delivery.postal_code %></td>
-              <th class="border border-dark align-middle" style="font-weight: normal;"><%= delivery.address %></td>
-              <th class="border border-dark align-middle" style="font-weight: normal;"><%= delivery.name %></td>
-              <th class="border border-dark align-middle" style="font-weight: normal;">
+              <td class="border border-dark align-middle" style="font-weight: normal;"><%= delivery.postal_code %></td>
+              <td class="border border-dark align-middle" style="font-weight: normal;"><%= delivery.address %></td>
+              <td class="border border-dark align-middle" style="font-weight: normal;"><%= delivery.name %></td>
+              <td class="border border-dark align-middle" style="font-weight: normal;">
                 <%= link_to "編集する", deliveries_edit_path(delivery.id), class: 'btn btn-success' %>
                 <%= link_to "削除する", deliveries_destroy_path(delivery.id), class: "btn btn-danger", method: :delete %>
               </td>

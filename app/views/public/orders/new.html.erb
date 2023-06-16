@@ -1,30 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-11">
-
-      <h4>注文情報入力</h4>
-
+    <div class="col-lg-8 offset-lg-1">
+      <h5 class="p-3"><span style="background-color:#dcdcdc;">　注文情報入力　</span></h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10" style="padding-left: 70px;">
       <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
-        <p>支払い方法</p>
-        <div class="form-group">
+        <span class="font-weight-bold" style="font-size:22px;">支払方法</span>
+        <div class="form-group" style="padding-left: 50px; padding-top: 5px; margin-bottom: 0px;">
           <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
           <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %></br>
 
           <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
           <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
         </div>
-
-        <p>お届け先</p>
-        <div>
-          <label><%= f.radio_button :select_address, 0 %>ご自身の住所</label>
-            <%= current_customer.postal_code %><%= current_customer.address %></br>
-            <%= current_customer.last_name %><%= current_customer.first_name %>
+        <span class="font-weight-bold" style="font-size:22px;">お届け先</span>
+        <div style="padding-left: 50px; padding-top: 5px; margin-bottom: 0px;">
+          <label style="margin-bottom: 0px;"><%= f.radio_button :select_address, 0 %>ご自身の住所</label></br>
+          <span style="margin-left: 20px;">〒<%= current_customer.postal_code %><%= current_customer.address %></span></br>
+          <span style="margin-left: 20px;"><%= current_customer.last_name %><%= current_customer.first_name %></span>
         </div>
-        <div>
+        <div style="padding-left: 50px; padding-top: 5px; margin-bottom: 0px;">
           <%= f.radio_button :select_address, 1 %>
           <%= f.label :address_registered, "登録済住所から選択" %></br>
-          <%= f.select :deliveries_id, options_from_collection_for_select(current_customer.deliveries, :id, :deliveries_display) %>
+          <span style="margin-left: 20px; margin-top: 0px; width: 295px;"><%= f.select :deliveries_id, options_from_collection_for_select(current_customer.deliveries, :id, :deliveries_display), {style: 'width: 295px;'}%></span>
         </div>
         <div>
           <%= f.radio_button :select_address, 2 %>
