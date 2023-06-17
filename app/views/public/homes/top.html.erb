@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3" style="padding-left: 70px;">
-      <%= render 'public/shared/genre_search', genres: @genres %>
+    <div class="col-lg-2" style="padding-left: 70px;">
+      <%#= render 'public/shared/genre_search', genres: @genres %>
     </div>
     <div class="col-lg-7">
       <div style="background-image: url(<%= asset_path('top.jpg') %>); height: 355px; background-size: cover; background-position: center;">
@@ -15,8 +15,8 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-9 offset-lg-3">
+  <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
+    <div class="col-lg-9 offset-lg-2">
       <h2>新着商品</h2>
       <div style="display: flex; flex-wrap: wrap;">
         <% @items.last(4).each do |item| %>
