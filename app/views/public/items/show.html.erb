@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" style="margin-bottom: 200px;">
-    <div class="col-lg-3" style="padding-left: 70px;">
-      <%= render 'public/shared/genre_search', genres: @genres %>
+    <div class="col-lg-2" style="padding-left: 70px;">
+      <%#= render 'public/shared/genre_search', genres: @genres %>
     </div>
     <div class="col-lg-4" style="padding-right: 0px;">
       <%= image_tag @item.image, size:"300x200" %>
@@ -26,12 +26,14 @@
             </td>
           </tr>
           <tr>
-            <td>
-              <%= form_with model: @cart_item do |f| %>
-                <%= f.hidden_field :item_id, :value => @item.id %>
-                <%= f.hidden_field :customer_id, :value => current_customer.id %>
-                <span style="margin-left: 15px; margin-right: 30px;"><%= f.select :amount, *[1..10] , {:prompt => "個数選択"} %></span>
-                <%= f.submit ' カートに入れる ', class: "btn btn-success"  %>
+            <td style="padding-left: 0px; padding-bottom: 20px;">
+              <% if current_customer %>
+                <%= form_with model: @cart_item do |f| %>
+                  <%= f.hidden_field :item_id, :value => @item.id %>
+                  <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                  <span style="margin-left: 15px; margin-right: 30px;"><%= f.select :amount, *[1..10] , {:prompt => "個数選択"} %></span>
+                  <%= f.submit ' カートに入れる ', class: "btn btn-success"  %>
+                <% end %>
               <% end %>
             </td>
           </tr>
