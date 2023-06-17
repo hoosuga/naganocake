@@ -1,7 +1,8 @@
 class Public::DeliveriesController < ApplicationController
   def index
     @delivery = Delivery.new
-    @deliveries = Delivery.all
+    @delivery.customer_id = current_customer.id
+    @deliveries = current_customer.deliveries
   end
 
   def create
@@ -12,6 +13,7 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def edit
+    @delivery.customer_id = current_customer.id
     @delivery = Delivery.find(params[:id])
   end
 
