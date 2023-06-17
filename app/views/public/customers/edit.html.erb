@@ -1,49 +1,53 @@
-<h4>会員情報編集</h4>
-
-<%= form_with model: @customer, url: customer_update_path do |f| %>
-  <div class="form-group">
-    氏名
-    <%= f.label :last_name, "(姓)" %>
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "(姓)" %>
-
-    <%= f.label :first_name, "(名)" %>
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "(名)" %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-1">
+      <h5 class="p-3"><span style="background-color:#dcdcdc;">　会員情報編集　</span></h5>
+    </div>
   </div>
-
-  <div class="form-group">
-    フリガナ
-    <%= f.label :last_name_kana, "(セイ)" %>
-    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "(セイ)" %>
-
-    <%= f.label :first_name_kana, "(メイ)" %>
-    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "(メイ)" %>
+  <div class="row" style="margin-bottom: 150px;">
+    <div class="col-lg-10 offset-lg-1">
+      <table class="table table-borderless">
+        <tbody>
+          <%= form_with model: @customer, url: customer_update_path do |f| %>
+          <tr>
+            <td class="col-lg-2">氏名</td>
+            <td>
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "(姓)", size: 25 %>
+              <span style="margin-left: 30px;"><%= f.text_field :first_name, autofocus: true, autocomplete: "(名)", size: 25 %></span>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-lg-2" style="padding-top: 0px">フリガナ</td>
+            <td style="padding-top: 0px">
+              <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "(セイ)", size: 25 %>
+              <span style="margin-left: 30px;"><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "(メイ)", size: 25 %></span>
+          </tr>
+          <tr>
+            <td class="col-lg-2" style="padding-top: 0px">郵便番号</td>
+            <td style="padding-top: 0px"><%= f.text_field :postal_code, autofocus: true, autocomplete: "郵便番号(ハイフンなし)", size: 25 %></span>
+          </tr>
+          <tr>
+            <td class="col-lg-2" style="padding-top: 0px">住所</td>
+            <td style="padding-top: 0px"><%= f.text_field :address, autofocus: true, autocomplete: "住所", size: 80 %></td>
+          </tr>
+          <tr>
+            <td class="col-lg-2" style="padding-top: 0px">電話番号</td>
+            <td style="padding-top: 0px"><%= f.text_field :telephone_number, autofocus: true, autocomplete: "電話番号(ハイフンなし)", size: 25 %></td>
+          </tr>
+          <tr>
+            <td class="col-lg-2" style="padding-top: 0px">メールアドレス</td>
+            <td style="padding-top: 0px"><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 25 %></td>
+          </tr>
+          <tr>
+            <td style="padding-top: 10px"></td>
+            <td style="padding-top: 10px">
+              <span><%= f.submit "　　　編集内容を保存　　　", class: "btn btn-success" %></span>
+              <span style="margin-left: 200px"><%= link_to "　退会する　", customer_confirm_withdraw_path, class: 'btn btn-danger' %></span>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-
-  <div class="form-group">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :postal_code, autofocus: true, autocomplete: "郵便番号(ハイフンなし)" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address, autofocus: true, autocomplete: "住所" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>
-    <%= f.text_field :telephone_number, autofocus: true, autocomplete: "電話番号(ハイフンなし)" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "編集内容を保存" %>
-  </div>
-<% end %>
-
-<%= link_to customer_confirm_withdraw_path, class:'nav-link' do %>
-  退会する
-<% end %>
+</div>
