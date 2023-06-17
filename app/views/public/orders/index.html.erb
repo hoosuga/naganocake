@@ -1,38 +1,47 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-11 offset-lg-2">
-      <h5>注文履歴一覧</h5>
+    <div class="col-lg-8 offset-lg-1">
+      <h5 class="p-3"><span style="background-color:#dcdcdc;">　注文履歴一覧　</span></h5>
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-10 offset-lg-1">
-      <table class="table table-borderless table-sm">
+    <div class="col-lg-12" style="padding: 10px;">
+      <table class="table table-bordered">
         <thead>
           <tr>
-            <th>注文日</th>
-            <th>配送先</th>
-            <th>注文商品</th>
-            <th>支払金額</th>
-            <th>ステータス</th>
-            <th>注文詳細</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">注文日</th>
+            <th class="table-active col-lg-4 border border-dark" style="font-weight: normal; padding-left: 5px;">配送先</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">注文商品</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">支払金額</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">ステータス</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">注文詳細</th>
           </tr>
         </thead>
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td><%= localize order.created_at, format: :short %></td>
-              <td>〒<%= order.postal_code %></br>
+              <td class="border border-dark align-middle" style="font-weight: normal; padding-left: 5px;">
+                <%= localize order.created_at, format: :short %>
+              </td>
+              <td class="border border-dark align-middle" style="font-weight: normal; padding-left: 5px; padding-top: 0px; padding-bottom: 0px;">
+                  〒<%= order.postal_code %></br>
                   <%= order.address %></br>
                   <%= order.name %>
               </td>
-              <td>
+              <td class="border border-dark align-middle" style="font-weight: normal; padding-left: 5px; padding-top: 0px; padding-bottom: 0px;">
                 <% order.order_details.each do |order_detail| %>
-                  <%= order_detail.item.name %>
+                  <%= order_detail.item.name %></br>
                 <% end %>
               </td>
-              <td><%= order.invoice_amount.to_s(:delimited) %>円</td>
-              <td><%= order.order_status_i18n %></td>
-              <td><%= link_to "表示する", order_show_path(order.id), class: "btn btn-primary" %></td>
+              <td class="border border-dark align-middle" style="font-weight: normal; padding-left: 5px;">
+                <%= order.invoice_amount.to_s(:delimited) %>円
+              </td>
+              <td class="border border-dark align-middle" style="font-weight: normal; padding-left: 5px;">
+                <%= order.order_status_i18n %>
+              </td>
+              <td class="border border-dark align-middle" style="padding:5px; text-align:center;">
+                <%= link_to " 表示する ", order_show_path(order.id), class: "btn btn-primary" %>
+              </td>
             </tr>
           <% end %>
         </tbody>
