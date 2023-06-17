@@ -1,59 +1,56 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-11">
-    <h4>注文情報確認</h4>
+    <div class="col-lg-8 offset-lg-1">
+      <h5 class="p-3"><span style="background-color:#dcdcdc;">　注文情報確認　</span></h5>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-7">
+  <div class="row" style="margin-bottom: 0px;">
+    <div class="col-lg-8" style="padding: 10px; padding-left: 40px;">
       <table>
         <thead>
           <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
+            <th class="table-active col-lg-3 border border-dark" style="font-weight: normal; padding-left: 5px; padding-top: 10px; padding-bottom: 10px">商品名</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">単価(税込)</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">数量</th>
+            <th class="table-active col-lg-1 border border-dark" style="font-weight: normal; padding-left: 5px;">小計</th>
           </tr>
         </thead>
         <tbody>
           <% @cart_items.each do |cart_item| %>
-          <tr>
-            <td>
-              <%= image_tag cart_item.item.image, size:'150x100' %>
-              <%= cart_item.item.name %>
-            </td>
-            <td><%= cart_item.item.tax_price.to_s(:delimited) %></td>
-            <td><%= cart_item.amount %></td>
-            <td><%= cart_item.subtotal.to_s(:delimited, delimter: ',') %></td>
-          </tr>
-          <% @sum += cart_item.subtotal %>
+            <tr>
+              <td class="border border-dark align-middle" style="padding:5px;">
+                <%= image_tag cart_item.item.image, size:'60x40' %>
+                <span class="font-weight-bold" style="padding-left: 10px;"><%= cart_item.item.name %></span>
+              </td>
+              <td class="border border-dark align-middle" style="padding:5px;">
+                <%= cart_item.item.tax_price.to_s(:delimited) %>
+              </td>
+              <td class="border border-dark align-middle" style="padding:5px;">
+                <%= cart_item.amount %>
+              </td>
+              <td class="border border-dark align-middle" style="padding:5px;">
+                <%= cart_item.subtotal.to_s(:delimited, delimter: ',') %>
+              </td>
+            </tr>
+            <% @sum += cart_item.subtotal %>
           <% end %>
         </tbody>
       </table>
     </div>
-    <div class="col-lg-4">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
+    <div class="col-lg-3" style="padding: 10px; padding-left: 40px; padding-right: 40px;">
+      <table class="table table-bordered">
         <tbody>
           <tr>
-            <td>送料</td>
-            <td><%= @order.postage %></td>
+            <td width="100px" class="table-active border border-dark align-middle" style="padding-left: 5px;">送料</td>
+            <td class="border border-dark align-middle" style="padding-left: 5px;"><%= @order.postage %></td>
           </tr>
           <tr>
-            <td>合計金額</td>
-            <td><%= @sum.to_s(:delimited, delimter: ',') %></td>
+            <td class="table-active border border-dark align-middle" style="padding-left: 5px;">合計金額</td>
+            <td class="border border-dark align-middle" style="padding-left: 5px;"><%= @sum.to_s(:delimited, delimter: ',') %></td>
           </tr>
           <tr>
-            <td>請求金額</td>
-            <td>
+            <td class="table-active border border-dark align-middle" style="padding-left: 5px;">請求金額</td>
+            <td class="border border-dark align-middle" style="padding-left: 5px;">
               <% @order.invoice_amount = @order.postage + @sum %>
               <%= @order.invoice_amount.to_s(:delimited) %>
             </td>
@@ -63,26 +60,42 @@
     </div>
   </div>
   <div class="row">
-      <div class="col-lg-1"></div>
-      <div class="col-lg-1">
-        <p>支払方法</p>
-      </div>
-      <div class="col-lg-10">
-        <%= @order.payment_method_i18n %>
-      </div>
+    <div class="col-lg-8" style="padding: 10px; padding-left: 40px;">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="col-lg-2">
+              <span class="font-weight-bold" style="font-size:22px;">支払方法</span>
+            </td>
+            <td class="align-middle">
+              <span style="font-size:17px;"><%= @order.payment_method_i18n %></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="row">
-    <div class="col-lg-1"></div>
-      <div class="col-lg-1">
-        <p>お届け先</p>
-      </div>
-      <div class="col-lg-10">
-        〒<%= @order.postal_code %> <%= @order.address %></br>
-        <%= @order.name %>
-      </div>
+    <div class="col-lg-8" style="padding: 10px; padding-left: 40px;">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="col-lg-2">
+              <span class="font-weight-bold" style="font-size:22px;">お届け先</span>
+            </td>
+            <td class="align-middle">
+              <span style="font-size:17px;">
+                〒<%= @order.postal_code %> <%= @order.address %></br>
+                <%= @order.name %>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div class="row">
-  <div class="mx-auto">
+    <div class="mx-auto">
     <!-- Order/confirmからOrderモデルへ情報を送る -->
     <%= form_with model: @order do |f| %>
       <%= f.hidden_field :customer_id, :value => @order.customer_id %>
@@ -93,8 +106,9 @@
       <%= f.hidden_field :postage, :value => @order.postage %>
       <%= f.hidden_field :invoice_amount, :value => @order.invoice_amount %>
       <div class="form-group">
-        <%= f.submit "注文を確定する", class: "btn btn-success" %>
+        <%= f.submit "　注文を確定する　", class: "btn btn-success" %>
       </div>
     <% end %>
+    </div>
   </div>
 </div>
