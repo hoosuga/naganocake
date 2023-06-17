@@ -10,17 +10,17 @@
         <tbody>
           <%= form_with model: @delivery, url: deliveries_create_path, method: :post do |f| %>
             <tr>
-              <th class="col-lg-3" style="font-weight: normal;">郵便番号(ハイフンなし)</th>
-              <th><%= f.text_field :postal_code, placeholder:"0000000" %></th>
+              <td class="col-lg-3" style="font-weight: normal;">郵便番号(ハイフンなし)</td>
+              <td><%= f.text_field :postal_code, placeholder:"0000000" %></td>
             </tr>
             <tr>
-              <th style="padding-top: 0px; font-weight: normal;">住所</th>
-              <th style="padding-top: 0px; padding-right: 0px;"><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", :size=>"70" %></th>
+              <td style="padding-top: 0px; font-weight: normal;">住所</td>
+              <td style="padding-top: 0px; padding-right: 0px;"><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", :size=>"70" %></td>
             </tr>
             <tr>
-              <th style="padding-top: 0px; font-weight: normal;">宛名</th>
-              <th style="padding-top: 0px; padding-right: 0px;"><%= f.text_field :name, placeholder:"令和道子" %></th>
-              <th><span style="margin-left: 0px;"><%= f.submit "　新規登録　", class: "btn btn-success" %></span></th>
+              <td style="padding-top: 0px; font-weight: normal;">宛名</td>
+              <td style="padding-top: 0px; padding-right: 0px;"><%= f.text_field :name, placeholder:"令和道子" %></td>
+              <td><span style="margin-left: 0px;"><%= f.submit "　新規登録　", class: "btn btn-success" %></span></td>
             </tr>
           <% end %>
         </tbody>
